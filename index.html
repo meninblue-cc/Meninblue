@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -21,455 +20,241 @@
   --border: rgba(168,224,99,0.12);
   --border-hot: rgba(168,224,99,0.35);
 }
-
-- { margin:0; padding:0; box-sizing:border-box; }
-
+* { margin:0; padding:0; box-sizing:border-box; }
 body {
-background: var(–bg);
-color: var(–text);
-font-family: ‘Barlow’, sans-serif;
-min-height: 100vh;
-overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Barlow', sans-serif;
+  min-height: 100vh;
+  overflow-x: hidden;
 }
-
 body::before {
-content:’’;
-position:fixed; inset:0;
-background:
-radial-gradient(ellipse 60% 40% at 90% 10%, rgba(168,224,99,0.06) 0%, transparent 55%),
-radial-gradient(ellipse 40% 50% at 10% 90%, rgba(94,190,26,0.05) 0%, transparent 55%);
-pointer-events:none; z-index:0;
+  content:''; position:fixed; inset:0;
+  background:
+    radial-gradient(ellipse 60% 40% at 90% 10%, rgba(168,224,99,0.06) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 10% 90%, rgba(94,190,26,0.05) 0%, transparent 55%);
+  pointer-events:none; z-index:0;
 }
-
-/* ── GRID LINES BG ── */
 body::after {
-content:’’;
-position:fixed; inset:0;
-background-image:
-linear-gradient(rgba(168,224,99,0.03) 1px, transparent 1px),
-linear-gradient(90deg, rgba(168,224,99,0.03) 1px, transparent 1px);
-background-size: 40px 40px;
-pointer-events:none; z-index:0;
+  content:''; position:fixed; inset:0;
+  background-image:
+    linear-gradient(rgba(168,224,99,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,224,99,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events:none; z-index:0;
 }
-
 .wrap { max-width:960px; margin:0 auto; padding:0 18px; position:relative; z-index:1; }
 
-/* ── HEADER ── */
-header {
-padding: 26px 0 22px;
-border-bottom: 1px solid var(–border);
-margin-bottom: 28px;
-}
+/* HEADER */
+header { padding:26px 0 22px; border-bottom:1px solid var(--border); margin-bottom:28px; }
 .hd { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:14px; }
 .brand { display:flex; align-items:center; gap:12px; }
 .brand-shield {
-width:46px; height:46px;
-background: linear-gradient(160deg, var(–accent2), var(–accent));
-clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-display:flex; align-items:center; justify-content:center;
-font-size:20px;
-filter: drop-shadow(0 0 10px rgba(168,224,99,0.4));
+  width:46px; height:46px;
+  background:linear-gradient(160deg, var(--accent2), var(--accent));
+  clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);
+  display:flex; align-items:center; justify-content:center;
+  font-size:20px;
+  filter:drop-shadow(0 0 10px rgba(168,224,99,0.4));
 }
-.brand h1 {
-font-family:‘Oswald’, sans-serif;
-font-size:1.55rem;
-font-weight:600;
-letter-spacing:2px;
-line-height:1.1;
-color:#fff;
-}
-.brand p {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.72rem;
-letter-spacing:3px;
-color:var(–accent);
-text-transform:uppercase;
-}
-
+.brand h1 { font-family:'Oswald',sans-serif; font-size:1.55rem; font-weight:600; letter-spacing:2px; line-height:1.1; color:#fff; }
+.brand p { font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:3px; color:var(--accent); text-transform:uppercase; }
 .header-tag {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.72rem;
-letter-spacing:2px;
-color:var(–muted);
-text-transform:uppercase;
-background:var(–surface2);
-border:1px solid var(–border);
-padding:6px 14px;
-border-radius:99px;
+  font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:2px;
+  color:var(--muted); text-transform:uppercase; background:var(--surface2);
+  border:1px solid var(--border); padding:6px 14px; border-radius:99px;
 }
 
-/* ── TOOLBAR ── */
-.toolbar {
-display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; align-items:center;
-}
+/* TOOLBAR */
+.toolbar { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:24px; align-items:center; }
 .search-wrap { flex:1; min-width:180px; position:relative; }
 .search-wrap input {
-width:100%;
-background:var(–surface);
-border:1px solid var(–border);
-color:var(–text);
-padding:10px 14px 10px 38px;
-border-radius:9px;
-font-family:‘Barlow’, sans-serif;
-font-size:0.92rem;
-outline:none;
-transition:border-color 0.2s;
+  width:100%; background:var(--surface); border:1px solid var(--border);
+  color:var(--text); padding:10px 14px 10px 38px; border-radius:9px;
+  font-family:'Barlow',sans-serif; font-size:0.92rem; outline:none; transition:border-color 0.2s;
 }
-.search-wrap input:focus { border-color:var(–accent); }
-.search-wrap input::placeholder { color:var(–muted); }
-.search-icon {
-position:absolute; left:12px; top:50%; transform:translateY(-50%);
-color:var(–muted); font-size:14px; pointer-events:none;
-}
+.search-wrap input:focus { border-color:var(--accent); }
+.search-wrap input::placeholder { color:var(--muted); }
+.search-icon { position:absolute; left:12px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:14px; pointer-events:none; }
 .filter-select {
-background:var(–surface);
-border:1px solid var(–border);
-color:var(–text);
-padding:10px 14px;
-border-radius:9px;
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.9rem;
-letter-spacing:1px;
-outline:none;
-cursor:pointer;
-transition:border-color 0.2s;
+  background:var(--surface); border:1px solid var(--border); color:var(--text);
+  padding:10px 14px; border-radius:9px; font-family:'Barlow Condensed',sans-serif;
+  font-size:0.9rem; letter-spacing:1px; outline:none; cursor:pointer; transition:border-color 0.2s;
 }
-.filter-select:focus { border-color:var(–accent); }
-option { background:var(–surface); }
-
+.filter-select:focus { border-color:var(--accent); }
+option { background:var(--surface); }
 .btn-add {
-background:var(–accent2);
-border:none;
-color:#0c0f0a;
-padding:10px 20px;
-border-radius:9px;
-font-family:‘Oswald’, sans-serif;
-font-size:0.9rem;
-font-weight:600;
-letter-spacing:2px;
-text-transform:uppercase;
-cursor:pointer;
-transition:all 0.2s;
-white-space:nowrap;
+  background:var(--accent2); border:none; color:#0c0f0a; padding:10px 20px;
+  border-radius:9px; font-family:'Oswald',sans-serif; font-size:0.9rem; font-weight:600;
+  letter-spacing:2px; text-transform:uppercase; cursor:pointer; transition:all 0.2s; white-space:nowrap;
 }
-.btn-add:hover { background:var(–accent); transform:translateY(-1px); }
+.btn-add:hover { background:var(--accent); transform:translateY(-1px); }
 
-/* ── TEAM GROUP ── */
+/* STATS */
+.stats-row { display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px; }
+.stat-pill {
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:10px; padding:10px 16px; display:flex; align-items:center; gap:8px;
+}
+.stat-pill-val { font-family:'Oswald',sans-serif; font-size:1.4rem; font-weight:600; line-height:1; }
+.stat-pill-lbl { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--muted); }
+
+/* TEAM GROUP */
 .team-group { margin-bottom:32px; }
-.team-header {
-display:flex; align-items:center; gap:12px;
-margin-bottom:14px;
-padding-bottom:10px;
-border-bottom:1px solid var(–border);
-}
-.team-name {
-font-family:‘Oswald’, sans-serif;
-font-size:1.2rem;
-font-weight:600;
-letter-spacing:1.5px;
-color:#fff;
-}
+.team-header { display:flex; align-items:center; gap:12px; margin-bottom:14px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+.team-name { font-family:'Oswald',sans-serif; font-size:1.2rem; font-weight:600; letter-spacing:1.5px; color:#fff; }
 .team-count {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.72rem;
-letter-spacing:2px;
-color:var(–muted);
-background:var(–surface2);
-border:1px solid var(–border);
-border-radius:99px;
-padding:2px 10px;
-text-transform:uppercase;
+  font-family:'Barlow Condensed',sans-serif; font-size:0.72rem; letter-spacing:2px;
+  color:var(--muted); background:var(--surface2); border:1px solid var(--border);
+  border-radius:99px; padding:2px 10px; text-transform:uppercase;
 }
 .team-flag {
-font-size:0.7rem;
-font-family:‘Barlow Condensed’, sans-serif;
-letter-spacing:1.5px;
-color:var(–accent);
-background:rgba(168,224,99,0.08);
-border:1px solid var(–border-hot);
-border-radius:99px;
-padding:2px 10px;
-text-transform:uppercase;
-margin-left:auto;
+  font-size:0.7rem; font-family:'Barlow Condensed',sans-serif; letter-spacing:1.5px;
+  color:var(--accent); background:rgba(168,224,99,0.08); border:1px solid var(--border-hot);
+  border-radius:99px; padding:2px 10px; text-transform:uppercase; margin-left:auto;
 }
 
-/* ── THREAT CARDS ── */
+/* THREAT CARDS */
 .threat-list { display:flex; flex-direction:column; gap:10px; }
-
 .threat-card {
-background:var(–surface);
-border:1px solid var(–border);
-border-left:3px solid var(–threat-clr, var(–muted));
-border-radius:0 12px 12px 0;
-padding:16px 18px;
-display:grid;
-grid-template-columns: auto 1fr auto;
-gap:14px;
-align-items:start;
-transition:border-color 0.2s, transform 0.15s;
-animation: fadeIn 0.3s ease both;
+  background:var(--surface); border:1px solid var(--border);
+  border-left:3px solid var(--threat-clr, var(--muted));
+  border-radius:0 12px 12px 0; padding:16px 18px;
+  display:grid; grid-template-columns:auto 1fr auto;
+  gap:14px; align-items:start;
+  transition:border-color 0.2s, transform 0.15s;
+  animation:fadeIn 0.3s ease both;
 }
-@keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
-.threat-card:hover { border-color:var(–border-hot); transform:translateX(3px); }
-
-/* threat level colors */
-.threat-card.t-high  { –threat-clr: var(–danger); }
-.threat-card.t-med   { –threat-clr: var(–warn); }
-.threat-card.t-low   { –threat-clr: var(–accent2); }
+@keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+.threat-card:hover { border-color:var(--border-hot); transform:translateX(3px); }
+.threat-card.t-high { --threat-clr:var(--danger); }
+.threat-card.t-med  { --threat-clr:var(--warn); }
+.threat-card.t-low  { --threat-clr:var(--accent2); }
 
 .tc-avatar {
-width:44px; height:44px;
-border-radius:10px;
-background:linear-gradient(135deg, var(–surface3), var(–surface2));
-border:1px solid var(–border);
-display:flex; align-items:center; justify-content:center;
-font-family:‘Oswald’, sans-serif;
-font-size:1rem;
-color:var(–accent);
-flex-shrink:0;
+  width:44px; height:44px; border-radius:10px;
+  background:linear-gradient(135deg,var(--surface3),var(--surface2));
+  border:1px solid var(--border); display:flex; align-items:center; justify-content:center;
+  font-family:'Oswald',sans-serif; font-size:1rem; color:var(--accent); flex-shrink:0;
 }
-
 .tc-body { min-width:0; }
-.tc-name {
-font-family:‘Oswald’, sans-serif;
-font-size:1.05rem;
-font-weight:500;
-color:#fff;
-letter-spacing:0.5px;
-margin-bottom:2px;
-}
-.tc-meta {
-display:flex; align-items:center; gap:8px; flex-wrap:wrap;
-margin-bottom:8px;
-}
-.role-tag {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.7rem;
-letter-spacing:1.5px;
-text-transform:uppercase;
-padding:2px 9px;
-border-radius:99px;
-border:1px solid;
-}
+.tc-name { font-family:'Oswald',sans-serif; font-size:1.05rem; font-weight:500; color:#fff; letter-spacing:0.5px; margin-bottom:2px; }
+.tc-meta { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-bottom:8px; }
+.role-tag { font-family:'Barlow Condensed',sans-serif; font-size:0.7rem; letter-spacing:1.5px; text-transform:uppercase; padding:2px 9px; border-radius:99px; border:1px solid; }
 .role-tag.bat  { color:#60b4ff; border-color:rgba(96,180,255,0.3); background:rgba(96,180,255,0.08); }
 .role-tag.bowl { color:#ff9f60; border-color:rgba(255,159,96,0.3); background:rgba(255,159,96,0.08); }
 .role-tag.all  { color:#d0a8ff; border-color:rgba(208,168,255,0.3); background:rgba(208,168,255,0.08); }
 .role-tag.wk   { color:#60d4c8; border-color:rgba(96,212,200,0.3); background:rgba(96,212,200,0.08); }
-
-.observed-on {
-font-size:0.72rem;
-color:var(–muted);
-font-family:‘Barlow’, sans-serif;
-}
-
-.tc-intel {
-font-size:0.88rem;
-color:var(–text);
-line-height:1.5;
-opacity:0.9;
-}
-
+.observed-on { font-size:0.72rem; color:var(--muted); font-family:'Barlow',sans-serif; }
+.tc-intel { font-size:0.88rem; color:var(--text); line-height:1.5; opacity:0.9; }
 .tc-tags { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
 .intel-tag {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.68rem;
-letter-spacing:1.5px;
-text-transform:uppercase;
-padding:2px 8px;
-background:var(–surface3);
-border:1px solid var(–border);
-border-radius:4px;
-color:var(–muted);
+  font-family:'Barlow Condensed',sans-serif; font-size:0.68rem; letter-spacing:1.5px;
+  text-transform:uppercase; padding:2px 8px; background:var(--surface3);
+  border:1px solid var(--border); border-radius:4px; color:var(--muted);
 }
-
 .tc-right { display:flex; flex-direction:column; align-items:flex-end; gap:8px; flex-shrink:0; }
 .threat-badge {
-font-family:‘Oswald’, sans-serif;
-font-size:0.72rem;
-font-weight:600;
-letter-spacing:2px;
-text-transform:uppercase;
-padding:4px 10px;
-border-radius:6px;
-border:1px solid;
-white-space:nowrap;
+  font-family:'Oswald',sans-serif; font-size:0.72rem; font-weight:600; letter-spacing:2px;
+  text-transform:uppercase; padding:4px 10px; border-radius:6px; border:1px solid; white-space:nowrap;
 }
-.threat-badge.t-high { color:var(–danger); border-color:rgba(255,77,77,0.3); background:rgba(255,77,77,0.08); }
-.threat-badge.t-med  { color:var(–warn);   border-color:rgba(255,184,48,0.3); background:rgba(255,184,48,0.08); }
-.threat-badge.t-low  { color:var(–accent2);border-color:rgba(94,190,26,0.3);  background:rgba(94,190,26,0.08); }
-
+.threat-badge.t-high { color:var(--danger); border-color:rgba(255,77,77,0.3); background:rgba(255,77,77,0.08); }
+.threat-badge.t-med  { color:var(--warn);   border-color:rgba(255,184,48,0.3); background:rgba(255,184,48,0.08); }
+.threat-badge.t-low  { color:var(--accent2);border-color:rgba(94,190,26,0.3);  background:rgba(94,190,26,0.08); }
 .tc-actions { display:flex; gap:6px; }
 .icon-btn {
-width:30px; height:30px;
-background:var(–surface2);
-border:1px solid var(–border);
-border-radius:7px;
-color:var(–muted);
-cursor:pointer;
-font-size:13px;
-display:flex; align-items:center; justify-content:center;
-transition:all 0.2s;
+  width:30px; height:30px; background:var(--surface2); border:1px solid var(--border);
+  border-radius:7px; color:var(--muted); cursor:pointer; font-size:13px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
 }
-.icon-btn:hover { border-color:var(–accent); color:var(–accent); }
-.icon-btn.del:hover { border-color:var(–danger); color:var(–danger); }
+.icon-btn:hover { border-color:var(--accent); color:var(--accent); }
+.icon-btn.del:hover { border-color:var(--danger); color:var(--danger); }
 
-/* ── EMPTY STATE ── */
-.empty {
-text-align:center;
-padding:60px 20px;
-color:var(–muted);
-}
+/* EMPTY */
+.empty { text-align:center; padding:60px 20px; color:var(--muted); }
 .empty-icon { font-size:3rem; margin-bottom:16px; opacity:0.4; }
-.empty h3 { font-family:‘Oswald’, sans-serif; letter-spacing:2px; margin-bottom:8px; color:var(–text); opacity:0.4; }
+.empty h3 { font-family:'Oswald',sans-serif; letter-spacing:2px; margin-bottom:8px; color:var(--text); opacity:0.4; }
 .empty p { font-size:0.88rem; opacity:0.5; }
 
-/* ── MODAL ── */
+/* LOADING */
+.loading { text-align:center; padding:60px 20px; }
+.spinner {
+  width:40px; height:40px; border:3px solid var(--border);
+  border-top-color:var(--accent); border-radius:50%;
+  animation:spin 0.8s linear infinite; margin:0 auto 16px;
+}
+@keyframes spin { to { transform:rotate(360deg); } }
+.loading p { font-family:'Barlow Condensed',sans-serif; letter-spacing:2px; color:var(--muted); font-size:0.85rem; text-transform:uppercase; }
+
+/* MODAL */
 .overlay {
-position:fixed; inset:0;
-background:rgba(0,0,0,0.8);
-backdrop-filter:blur(8px);
-z-index:100;
-display:flex; align-items:center; justify-content:center;
-padding:16px;
-opacity:0; pointer-events:none;
-transition:opacity 0.2s;
+  position:fixed; inset:0; background:rgba(0,0,0,0.8); backdrop-filter:blur(8px);
+  z-index:100; display:flex; align-items:center; justify-content:center; padding:16px;
+  opacity:0; pointer-events:none; transition:opacity 0.2s;
 }
 .overlay.open { opacity:1; pointer-events:all; }
 .modal {
-background:var(–surface);
-border:1px solid var(–border-hot);
-border-radius:16px;
-padding:26px;
-width:100%;
-max-width:500px;
-max-height:92vh;
-overflow-y:auto;
-transform:scale(0.96);
-transition:transform 0.2s;
+  background:var(--surface); border:1px solid var(--border-hot); border-radius:16px;
+  padding:26px; width:100%; max-width:500px; max-height:92vh; overflow-y:auto;
+  transform:scale(0.96); transition:transform 0.2s;
 }
 .overlay.open .modal { transform:scale(1); }
-
-.modal-hd {
-display:flex; align-items:center; justify-content:space-between;
-margin-bottom:20px;
-}
-.modal-hd h2 {
-font-family:‘Oswald’, sans-serif;
-font-size:1.3rem;
-letter-spacing:2px;
-font-weight:600;
-color:#fff;
-}
+.modal-hd { display:flex; align-items:center; justify-content:space-between; margin-bottom:20px; }
+.modal-hd h2 { font-family:'Oswald',sans-serif; font-size:1.3rem; letter-spacing:2px; font-weight:600; color:#fff; }
 .close-btn {
-background:var(–surface2); border:1px solid var(–border);
-color:var(–muted); width:32px; height:32px; border-radius:8px;
-cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center;
-transition:all 0.2s;
+  background:var(--surface2); border:1px solid var(--border); color:var(--muted);
+  width:32px; height:32px; border-radius:8px; cursor:pointer; font-size:16px;
+  display:flex; align-items:center; justify-content:center; transition:all 0.2s;
 }
-.close-btn:hover { border-color:var(–danger); color:var(–danger); }
-
+.close-btn:hover { border-color:var(--danger); color:var(--danger); }
 .fg { margin-bottom:14px; }
 .fg label {
-display:block;
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.72rem;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(–muted);
-margin-bottom:5px;
+  display:block; font-family:'Barlow Condensed',sans-serif; font-size:0.72rem;
+  letter-spacing:2px; text-transform:uppercase; color:var(--muted); margin-bottom:5px;
 }
 .fg input, .fg select, .fg textarea {
-width:100%;
-background:var(–surface2);
-border:1px solid var(–border);
-color:var(–text);
-padding:10px 14px;
-border-radius:9px;
-font-family:‘Barlow’, sans-serif;
-font-size:0.9rem;
-outline:none;
-transition:border-color 0.2s;
+  width:100%; background:var(--surface2); border:1px solid var(--border); color:var(--text);
+  padding:10px 14px; border-radius:9px; font-family:'Barlow',sans-serif; font-size:0.9rem;
+  outline:none; transition:border-color 0.2s;
 }
-.fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(–accent); }
-.fg input::placeholder, .fg textarea::placeholder { color:var(–muted); }
+.fg input:focus, .fg select:focus, .fg textarea:focus { border-color:var(--accent); }
+.fg input::placeholder, .fg textarea::placeholder { color:var(--muted); }
 .fg textarea { resize:vertical; min-height:80px; }
-
 .fg-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
-
 .modal-actions { display:flex; gap:10px; margin-top:20px; }
 .btn-cancel {
-flex:1; padding:11px;
-background:transparent; border:1px solid var(–border);
-color:var(–muted); border-radius:9px;
-font-family:‘Oswald’, sans-serif; font-size:0.9rem; letter-spacing:2px;
-cursor:pointer; transition:all 0.2s;
+  flex:1; padding:11px; background:transparent; border:1px solid var(--border);
+  color:var(--muted); border-radius:9px; font-family:'Oswald',sans-serif;
+  font-size:0.9rem; letter-spacing:2px; cursor:pointer; transition:all 0.2s;
 }
-.btn-cancel:hover { border-color:var(–text); color:var(–text); }
+.btn-cancel:hover { border-color:var(--text); color:var(--text); }
 .btn-save {
-flex:2; padding:11px;
-background:var(–accent2); border:none;
-color:#0c0f0a; border-radius:9px;
-font-family:‘Oswald’, sans-serif; font-size:0.9rem; font-weight:600; letter-spacing:2px;
-cursor:pointer; transition:all 0.2s; text-transform:uppercase;
+  flex:2; padding:11px; background:var(--accent2); border:none; color:#0c0f0a;
+  border-radius:9px; font-family:'Oswald',sans-serif; font-size:0.9rem; font-weight:600;
+  letter-spacing:2px; cursor:pointer; transition:all 0.2s; text-transform:uppercase;
 }
-.btn-save:hover { background:var(–accent); }
+.btn-save:hover { background:var(--accent); }
+.btn-save:disabled { opacity:0.5; cursor:not-allowed; }
 
-/* ── TOAST ── */
+/* TOAST */
 .toast {
-position:fixed; bottom:22px; right:22px;
-background:var(–surface2);
-border:1px solid var(–accent2);
-color:var(–text);
-padding:11px 18px;
-border-radius:9px;
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.9rem;
-letter-spacing:1px;
-z-index:200;
-opacity:0; transform:translateY(8px);
-transition:all 0.25s;
-pointer-events:none;
+  position:fixed; bottom:22px; right:22px; background:var(--surface2);
+  border:1px solid var(--accent2); color:var(--text); padding:11px 18px;
+  border-radius:9px; font-family:'Barlow Condensed',sans-serif; font-size:0.9rem;
+  letter-spacing:1px; z-index:200; opacity:0; transform:translateY(8px);
+  transition:all 0.25s; pointer-events:none;
 }
 .toast.show { opacity:1; transform:translateY(0); }
 
-/* ── STATS BAR ── */
-.stats-row {
-display:flex; gap:10px; flex-wrap:wrap; margin-bottom:26px;
-}
-.stat-pill {
-background:var(–surface);
-border:1px solid var(–border);
-border-radius:10px;
-padding:10px 16px;
-display:flex; align-items:center; gap:8px;
-}
-.stat-pill-val {
-font-family:‘Oswald’, sans-serif;
-font-size:1.4rem;
-font-weight:600;
-line-height:1;
-}
-.stat-pill-lbl {
-font-family:‘Barlow Condensed’, sans-serif;
-font-size:0.7rem;
-letter-spacing:2px;
-text-transform:uppercase;
-color:var(–muted);
-}
-
 @media(max-width:560px){
-.threat-card { grid-template-columns:auto 1fr; }
-.tc-right { flex-direction:row; grid-column:1/-1; justify-content:flex-start; }
-.fg-row { grid-template-columns:1fr; }
+  .threat-card { grid-template-columns:auto 1fr; }
+  .tc-right { flex-direction:row; grid-column:1/-1; justify-content:flex-start; }
+  .fg-row { grid-template-columns:1fr; }
 }
 </style>
-
 </head>
 <body>
 <div class="wrap">
-
-  <!-- HEADER -->
-
   <header>
     <div class="hd">
       <div class="brand">
@@ -483,11 +268,7 @@ color:var(–muted);
     </div>
   </header>
 
-  <!-- STATS BAR -->
-
   <div class="stats-row" id="statsRow"></div>
-
-  <!-- TOOLBAR -->
 
   <div class="toolbar">
     <div class="search-wrap">
@@ -510,118 +291,107 @@ color:var(–muted);
     <button class="btn-add" onclick="openModal()">+ Add Player</button>
   </div>
 
-  <!-- MAIN LIST -->
-
-  <div id="mainList"></div>
+  <div id="mainList">
+    <div class="loading">
+      <div class="spinner"></div>
+      <p>Loading intel from HQ...</p>
+    </div>
+  </div>
 </div>
 
 <!-- MODAL -->
-
 <div class="overlay" id="overlay" onclick="outsideClose(event)">
   <div class="modal">
     <div class="modal-hd">
       <h2 id="modalTitle">ADD THREAT</h2>
       <button class="close-btn" onclick="closeModal()">✕</button>
     </div>
-
-```
-<div class="fg">
-  <label>Player Name *</label>
-  <input type="text" id="fName" placeholder="e.g. Hameed Mohammed" />
-</div>
-<div class="fg-row">
-  <div class="fg">
-    <label>Role *</label>
-    <select id="fRole">
-      <option value="bat">Batsman</option>
-      <option value="bowl">Bowler</option>
-      <option value="all">All-Rounder</option>
-      <option value="wk">Wicket-Keeper</option>
-    </select>
-  </div>
-  <div class="fg">
-    <label>Threat Level *</label>
-    <select id="fThreat">
-      <option value="t-high">🔴 High — Key Danger</option>
-      <option value="t-med">🟡 Medium — Watch</option>
-      <option value="t-low">🟢 Low — Note Only</option>
-    </select>
-  </div>
-</div>
-<div class="fg">
-  <label>Opponent Team *</label>
-  <input type="text" id="fTeam" placeholder="e.g. Kitchener Kings Cricket Club" />
-</div>
-<div class="fg-row">
-  <div class="fg">
-    <label>Observed In (Match / Date)</label>
-    <input type="text" id="fMatch" placeholder="e.g. May 3 vs KW Eagles" />
-  </div>
-  <div class="fg">
-    <label>Strength Tags (comma-sep)</label>
-    <input type="text" id="fTags" placeholder="e.g. pull shot, yorkers" />
-  </div>
-</div>
-<div class="fg">
-  <label>Intel / Scouting Notes *</label>
-  <textarea id="fNotes" placeholder="What made them dangerous? Any weakness to exploit? Field placements? Delivery types?"></textarea>
-</div>
-
-<div class="modal-actions">
-  <button class="btn-cancel" onclick="closeModal()">Cancel</button>
-  <button class="btn-save" onclick="savePlayer()">Save Intel</button>
-</div>
-```
-
+    <div class="fg">
+      <label>Player Name *</label>
+      <input type="text" id="fName" placeholder="e.g. Hameed Mohammed" />
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label>Role *</label>
+        <select id="fRole">
+          <option value="bat">Batsman</option>
+          <option value="bowl">Bowler</option>
+          <option value="all">All-Rounder</option>
+          <option value="wk">Wicket-Keeper</option>
+        </select>
+      </div>
+      <div class="fg">
+        <label>Threat Level *</label>
+        <select id="fThreat">
+          <option value="t-high">🔴 High — Key Danger</option>
+          <option value="t-med">🟡 Medium — Watch</option>
+          <option value="t-low">🟢 Low — Note Only</option>
+        </select>
+      </div>
+    </div>
+    <div class="fg">
+      <label>Opponent Team *</label>
+      <input type="text" id="fTeam" placeholder="e.g. Kitchener Kings Cricket Club" />
+    </div>
+    <div class="fg-row">
+      <div class="fg">
+        <label>Observed In (Match / Date)</label>
+        <input type="text" id="fMatch" placeholder="e.g. May 3 vs KW Eagles" />
+      </div>
+      <div class="fg">
+        <label>Strength Tags (comma-sep)</label>
+        <input type="text" id="fTags" placeholder="e.g. pull shot, yorkers" />
+      </div>
+    </div>
+    <div class="fg">
+      <label>Intel / Scouting Notes *</label>
+      <textarea id="fNotes" placeholder="What made them dangerous? Weakness to exploit? Field placements?"></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+      <button class="btn-save" id="saveBtn" onclick="savePlayer()">Save Intel</button>
+    </div>
   </div>
 </div>
 
 <div class="toast" id="toast"></div>
 
 <script>
-// ── SEED DATA ─────────────────────────────────────────────────────────────
-const SEED = [
-  {
-    id: 1,
-    name: 'Hameed Mohammed',
-    role: 'bat',
-    threat: 't-high',
-    team: 'Kitchener Kings Cricket Club',
-    match: 'May 3, 2026',
-    tags: ['aggressive opener', 'pull shot', 'runs on pace'],
-    notes: 'Opened the batting and scored rapidly in the first 5 overs. Loves pulling short balls square on the leg side. Struggles slightly with swing early doors — bring the ball in late on middle stump.'
-  },
-  {
-    id: 2,
-    name: 'Ranvir Singh',
-    role: 'bowl',
-    threat: 't-high',
-    team: 'Kitchener Kings Cricket Club',
-    match: 'May 3, 2026',
-    tags: ['yorker specialist', 'death overs', 'variations'],
-    notes: 'Took 3 wickets in the death overs. Excellent yorker at will. Uses a slower ball cutaway effectively. Batters should look to get him off his length early and target the 3rd and 4th over before he settles.'
-  }
-];
+const API = 'https://script.google.com/macros/s/AKfycbzSep9PWAOvozPjDjDIAkETYzefCJiuA1UF9Q-dz33mYI7EWUwmlz1iUfNYes7QDeZo/exec';
 
-let players = JSON.parse(localStorage.getItem('mib_scout') || JSON.stringify(SEED));
+let players = [];
 let editId = null;
 
-function save() { localStorage.setItem('mib_scout', JSON.stringify(players)); }
+// ── FETCH FROM SHEET ──────────────────────────────────────────────────────
+async function loadPlayers() {
+  try {
+    const res = await fetch(API);
+    players = await res.json();
+    renderAll();
+  } catch (e) {
+    document.getElementById('mainList').innerHTML = `
+      <div class="empty">
+        <div class="empty-icon">⚠️</div>
+        <h3>Could not load data</h3>
+        <p>Check your internet connection and try refreshing.</p>
+      </div>`;
+  }
+}
 
 // ── HELPERS ───────────────────────────────────────────────────────────────
 function initials(name) {
-  return name.trim().split(/\s+/).map(w => w[0]).join('').slice(0,2).toUpperCase();
+  return name.trim().split(/\s+/).map(w=>w[0]).join('').slice(0,2).toUpperCase();
 }
 function roleLabel(r) {
-  return { bat:'Batsman', bowl:'Bowler', all:'All-Rounder', wk:'Wicket-Keeper' }[r] || r;
+  return {bat:'Batsman',bowl:'Bowler',all:'All-Rounder',wk:'Wicket-Keeper'}[r]||r;
 }
 function threatLabel(t) {
-  return { 't-high':'High Threat', 't-med':'Medium', 't-low':'Watch' }[t] || t;
+  return {'t-high':'High Threat','t-med':'Medium','t-low':'Watch'}[t]||t;
 }
 
 // ── RENDER ────────────────────────────────────────────────────────────────
 function renderAll() {
-  const q = document.getElementById('searchInput').value.toLowerCase();
+  const q  = document.getElementById('searchInput').value.toLowerCase();
   const rf = document.getElementById('roleFilter').value;
   const tf = document.getElementById('threatFilter').value;
 
@@ -633,8 +403,8 @@ function renderAll() {
   });
 
   // stats
-  const high = players.filter(p => p.threat === 't-high').length;
-  const teams = [...new Set(players.map(p => p.team))].length;
+  const high  = players.filter(p=>p.threat==='t-high').length;
+  const teams = [...new Set(players.map(p=>p.team))].length;
   document.getElementById('statsRow').innerHTML = `
     <div class="stat-pill"><div class="stat-pill-val" style="color:var(--accent)">${players.length}</div><div class="stat-pill-lbl">Players<br>Scouted</div></div>
     <div class="stat-pill"><div class="stat-pill-val" style="color:var(--danger)">${high}</div><div class="stat-pill-lbl">High<br>Threats</div></div>
@@ -646,12 +416,6 @@ function renderAll() {
   filtered.forEach(p => {
     if (!groups[p.team]) groups[p.team] = [];
     groups[p.team].push(p);
-  });
-
-  // sort within group: high → med → low
-  const order = { 'tt-high': 0, 't-med': 1, 't-low': 2 };
-  Object.keys(groups).forEach(t => {
-    groups[t].sort((a, b) => (order[a.threat]||1) - (order[b.threat]||1));
   });
 
   const container = document.getElementById('mainList');
@@ -681,7 +445,7 @@ function renderAll() {
 }
 
 function playerCard(p) {
-  const tags = (p.tags||[]).map(t => `<span class="intel-tag">${t}</span>`).join('');
+  const tags = (p.tags||[]).filter(Boolean).map(t=>`<span class="intel-tag">${t}</span>`).join('');
   return `
   <div class="threat-card ${p.threat}">
     <div class="tc-avatar">${initials(p.name)}</div>
@@ -697,8 +461,8 @@ function playerCard(p) {
     <div class="tc-right">
       <span class="threat-badge ${p.threat}">${threatLabel(p.threat)}</span>
       <div class="tc-actions">
-        <button class="icon-btn" onclick="editPlayer(${p.id})" title="Edit">✏️</button>
-        <button class="icon-btn del" onclick="deletePlayer(${p.id})" title="Delete">🗑</button>
+        <button class="icon-btn" onclick="editPlayer('${p.id}')" title="Edit">✏️</button>
+        <button class="icon-btn del" onclick="deletePlayer('${p.id}')" title="Delete">🗑</button>
       </div>
     </div>
   </div>`;
@@ -707,26 +471,31 @@ function playerCard(p) {
 // ── MODAL ─────────────────────────────────────────────────────────────────
 function openModal(pid) {
   editId = pid || null;
-  const p = pid ? players.find(x => x.id === pid) : null;
+  const p = pid ? players.find(x=>String(x.id)===String(pid)) : null;
   document.getElementById('modalTitle').textContent = pid ? 'EDIT INTEL' : 'ADD THREAT';
-  document.getElementById('fName').value   = p?.name  || '';
-  document.getElementById('fRole').value   = p?.role  || 'bat';
-  document.getElementById('fThreat').value = p?.threat|| 't-high';
-  document.getElementById('fTeam').value   = p?.team  || '';
-  document.getElementById('fMatch').value  = p?.match || '';
+  document.getElementById('fName').value   = p?.name   || '';
+  document.getElementById('fRole').value   = p?.role   || 'bat';
+  document.getElementById('fThreat').value = p?.threat || 't-high';
+  document.getElementById('fTeam').value   = p?.team   || '';
+  document.getElementById('fMatch').value  = p?.match  || '';
   document.getElementById('fTags').value   = (p?.tags||[]).join(', ');
-  document.getElementById('fNotes').value  = p?.notes || '';
+  document.getElementById('fNotes').value  = p?.notes  || '';
+  document.getElementById('saveBtn').textContent = pid ? 'Update Intel' : 'Save Intel';
   document.getElementById('overlay').classList.add('open');
 }
 function editPlayer(id) { openModal(id); }
 function closeModal() { document.getElementById('overlay').classList.remove('open'); }
-function outsideClose(e) { if (e.target === document.getElementById('overlay')) closeModal(); }
+function outsideClose(e) { if(e.target===document.getElementById('overlay')) closeModal(); }
 
-function savePlayer() {
+async function savePlayer() {
   const name  = document.getElementById('fName').value.trim();
   const team  = document.getElementById('fTeam').value.trim();
   const notes = document.getElementById('fNotes').value.trim();
-  if (!name || !team || !notes) { showToast('Fill in Name, Team and Notes'); return; }
+  if (!name||!team||!notes) { showToast('Fill in Name, Team and Notes'); return; }
+
+  const btn = document.getElementById('saveBtn');
+  btn.disabled = true;
+  btn.textContent = 'Saving...';
 
   const tags = document.getElementById('fTags').value.split(',').map(t=>t.trim()).filter(Boolean);
   const data = {
@@ -736,33 +505,64 @@ function savePlayer() {
     match:  document.getElementById('fMatch').value.trim(),
   };
 
-  if (editId) {
-    const idx = players.findIndex(p => p.id === editId);
-    players[idx] = { ...players[idx], ...data };
-    showToast('Intel updated ✓');
-  } else {
-    players.push({ id: Date.now(), ...data });
-    showToast('Player added to scout list ✓');
+  try {
+    if (editId) {
+      const existing = players.find(x=>String(x.id)===String(editId));
+      await fetch(API, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'edit', player:{ ...data, id: existing.id } })
+      });
+      // update local
+      const idx = players.findIndex(x=>String(x.id)===String(editId));
+      players[idx] = { ...players[idx], ...data };
+      showToast('Intel updated ✓');
+    } else {
+      const newId = Date.now();
+      await fetch(API, {
+        method:'POST', mode:'no-cors',
+        headers:{'Content-Type':'application/json'},
+        body: JSON.stringify({ action:'add', player:{ ...data, id: newId } })
+      });
+      // add local
+      players.push({ ...data, id: newId });
+      showToast('Player added ✓');
+    }
+    closeModal();
+    renderAll();
+  } catch(e) {
+    showToast('Error saving — check connection');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = editId ? 'Update Intel' : 'Save Intel';
   }
-
-  save(); closeModal(); renderAll();
 }
 
-function deletePlayer(id) {
+async function deletePlayer(id) {
   if (!confirm('Remove this player from the scout list?')) return;
-  players = players.filter(p => p.id !== id);
-  save(); renderAll(); showToast('Removed');
+  try {
+    await fetch(API, {
+      method:'POST', mode:'no-cors',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ action:'delete', id })
+    });
+    players = players.filter(p=>String(p.id)!==String(id));
+    renderAll();
+    showToast('Removed');
+  } catch(e) {
+    showToast('Error deleting');
+  }
 }
 
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
   t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 2400);
+  setTimeout(()=>t.classList.remove('show'), 2400);
 }
 
-renderAll();
+// ── INIT ──────────────────────────────────────────────────────────────────
+loadPlayers();
 </script>
-
 </body>
 </html>
